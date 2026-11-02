@@ -83,15 +83,3 @@ Na página de uma execução, baixe:
 Abra o HTML com `npm run report`. Para um trace de falha: `npx playwright show-trace caminho/trace.zip`. Relatórios são gerados a cada execução e não são versionados.
 
 O roteiro dos casos 15/16 menciona uma mensagem de sucesso de pagamento. A implementação valida a página final `payment_done`, o título `Order Placed!` e a confirmação persistente `Congratulations! Your order has been confirmed!`, evitando depender de mensagem transitória anterior ao redirecionamento.
-
-## Entrega
-
-Entregue a URL **https://github.com/mirandaAline/automation-exercise-e2e**. Para gerar um ZIP local após um commit:
-
-```bash
-npm run zip
-```
-
-Arquivo: `dist/automation-exercise-e2e.zip`. O ZIP contém o **último commit**, não alterações ainda não commitadas. Quem recebe o projeto deve executar `npm ci` e instalar o navegador antes dos testes.
-
-Como o alvo é um serviço público externo, disponibilidade e tempo de resposta podem afetar execuções futuras. Consulte o resultado da execução e suas evidências para distinguir problemas do site de falhas nos cenários.
