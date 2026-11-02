@@ -4,7 +4,6 @@
 
 Projeto individual de automação de interface com **Playwright Test e JavaScript**, cobrindo os casos **1, 2, 3, 4, 5, 8, 9, 10, 15 e 16** do [roteiro oficial](https://www.automationexercise.com/test_cases).
 
-Autora: **Aline Miranda** · [Repositório para entrega](https://github.com/mirandaAline/automation-exercise-e2e)
 
 ## Executar localmente
 
