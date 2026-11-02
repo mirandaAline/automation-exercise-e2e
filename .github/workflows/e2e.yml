@@ -1,0 +1,52 @@
+name: Testes E2E
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  playwright:
+    name: Chromium - 10 casos
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Instalar dependências
+        run: npm ci
+      - name: Instalar Chromium e dependências do sistema
+        run: npx playwright install --with-deps chromium
+      - name: Executar os dez casos
+        run: npm test
+      - name: Publicar relatórios e evidências
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-playwright
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 30
+      - name: Gerar ZIP para entrega sem node_modules
+        if: ${{ !cancelled() }}
+        run: npm run zip
+      - name: Publicar projeto para entrega
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: projeto-entrega
+          path: dist/automation-exercise-e2e.zip
+          retention-days: 30

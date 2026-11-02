@@ -1,0 +1,21 @@
+{
+  "name": "automation-exercise-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Trabalho de conclusão: dez casos E2E do Automation Exercise com Playwright",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:list": "playwright test --list",
+    "report": "playwright show-report",
+    "zip": "node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}
